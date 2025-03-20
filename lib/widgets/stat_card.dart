@@ -39,10 +39,11 @@ class StatCard extends StatelessWidget {
               ),
             ),
             const SizedBox(height: 16),
-            SizedBox(
-              height: 100,
-              child: ProgressChart(data: data, isAverage: isAverage),
-            ),
+            if (data.length > 1)
+              SizedBox(
+                height: 100,
+                child: ProgressChart(data: data, isAverage: isAverage),
+              ),
           ],
         ),
       ),

@@ -18,4 +18,28 @@ class GameData {
   bool get isWin => myTeamScore > opponentScore;
   bool get isLoss => myTeamScore < opponentScore;
   bool get isTie => myTeamScore == opponentScore;
+
+  // Convert GameData to JSON
+  Map<String, dynamic> toJson() {
+    return {
+      'date': date.millisecondsSinceEpoch,
+      'goals': goals,
+      'assists': assists,
+      'points': points,
+      'myTeamScore': myTeamScore,
+      'opponentScore': opponentScore,
+    };
+  }
+
+  // Create GameData from JSON
+  factory GameData.fromJson(Map<String, dynamic> json) {
+    return GameData(
+      date: DateTime.fromMillisecondsSinceEpoch(json['date']),
+      goals: json['goals'],
+      assists: json['assists'],
+      points: json['points'],
+      myTeamScore: json['myTeamScore'],
+      opponentScore: json['opponentScore'],
+    );
+  }
 }
